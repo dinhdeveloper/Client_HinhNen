@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $path = "../Hinh/$filename";
                 $type = pathinfo($path, PATHINFO_EXTENSION);
                 $data = file_get_contents($path);
-                //$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-                $base64 = base64_encode($data);
+                $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                //$base64 = base64_encode($data);
                 $dulieu = array(
                     "tenLSP"=> $tenloai,
-                    "hinhSLP"=> $base64
+                    "hinhLSP"=> $base64
                 );
                 $data_string = json_encode($dulieu);
                 $curl = curl_init('https://hinhnen.azurewebsites.net/api/LoaiSanPham/themLSP');
